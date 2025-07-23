@@ -78,7 +78,7 @@ Then you can play:
 python legged_gym/scripts/play_curriculum_upper.py --task=h1_2_upper --load_run=xxx --checkpoint=xxx
 ```
 
-### 2.3 Training second iteration of upper body
+### 2.3 Training second iteration of lower body
 
 This training is similar to 2.1, except that using upper-1 policy instead of open-loop control.
 You should set the trained upper-body policy at `h1_2_lower_config.py`.
@@ -111,4 +111,22 @@ Then you can play:
 
 ``` bash
 python legged_gym/scripts/play_curriculum_upper.py --task=h1_2_upper --load_run=xxx --checkpoint=xxx
+```
+
+### 2.5 Training third iteration of lower body
+
+This training is similar to 2.1, except that using upper-2 policy instead of open-loop control.
+You should set the trained upper-body policy at `h1_2_lower_config.py`.
+
+``` bash
+python legged_gym/scripts/train.py \
+    --task=h1_2_lower \
+    --run_name=lower_body_iteration2 \
+    --headless \
+```
+
+Then you can play:
+
+``` bash
+python legged_gym/scripts/play_curriculum_lower.py --task=h1_2_lower --load_run=xxx --checkpoint=xxx
 ```

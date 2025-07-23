@@ -101,6 +101,7 @@ if __name__ == "__main__":
     print(colored(f"Load motion from {motion_path}......", "green"), end="\n")
     motion_data = joblib.load(motion_path) # shape: (num_motion, num_frames, num_dof)
     random_motion_idx = np.random.randint(0, len(motion_data))
+    print(colored(f"Current selected motion: {random_motion_idx}", "blue"), end="\n")
     frames = 0
 
     # load policy
@@ -134,7 +135,7 @@ if __name__ == "__main__":
                 gravity_orientation = get_gravity_orientation(quat)
                 omega = omega * ang_vel_scale
 
-                if counter // control_decimation > len(motion_data[random_motion_idx]):
+                if frames >= len(motion_data[random_motion_idx]):
                     random_motion_idx = np.random.randint(0, len(motion_data))
                     frames = 0
                     print(colored(f"Current selected motion: {random_motion_idx}", "blue"), end="\n")

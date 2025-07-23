@@ -6,7 +6,7 @@ motion_path: "{LEGGED_GYM_ROOT_DIR}/resources/motions/all_wave.pkl"
 
 
 # Total simulation time
-simulation_duration: 8
+simulation_duration: 10000
 # Simulation time step
 simulation_dt: 0.002
 # Controller update frequency (meets the requirement of simulation_dt * controll_decimation=0.02; 50Hz)
