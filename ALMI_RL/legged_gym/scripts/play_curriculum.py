@@ -157,8 +157,8 @@ def play(args):
         right_phase.append(float(env.phase_right[0].detach().cpu()))
         left_sin_phase.append(float(env.left_sin_phase[0].detach().cpu()))
         right_sin_phase.append(float(env.right_sin_phase[0].detach().cpu()))
-        print(i,env.target_q_list[i][0:6])
-        print(i,env.target_q_list[i][6:12])
+        # print(i,env.target_q_list[i][0:6])
+        # print(i,env.target_q_list[i][6:12])
         
         if PLOT_DOF and i > 20000:
             plot_dof(env.target_q_list, env.q_list)

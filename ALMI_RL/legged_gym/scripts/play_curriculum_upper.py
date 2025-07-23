@@ -74,14 +74,16 @@ def play(args):
 
     env_cfg.env.test = True
 
-    # env_cfg.commands.ranges.lin_vel_y = [0, 0]
-    env_cfg.commands.ranges.lin_vel_x = [0.0, 0.0] # scale
-    # env_cfg.commands.ranges.lin_vel_x = [0, 0]  
+    env_cfg.commands.ranges.lin_vel_y = [-0.3, 0.3]
+    # env_cfg.commands.ranges.lin_vel_y = [-0.0, 0.0]
+    # env_cfg.commands.ranges.lin_vel_x = [0.0, 0.0] # scale
+    env_cfg.commands.ranges.lin_vel_x = [-0.7, 0.7]  
     
-    env_cfg.commands.ranges.ang_vel_yaw = [0, 0]
+    # env_cfg.commands.ranges.ang_vel_yaw = [0, 0]
+    env_cfg.commands.ranges.ang_vel_yaw = [-0.5, 0.5]
     
-    env_cfg.commands.ranges.heading = [0, 0]
-    # env_cfg.commands.ranges.heading = [3.14, 3.14]
+    # env_cfg.commands.ranges.heading = [0, 0]
+    env_cfg.commands.ranges.heading = [3.14, 3.14]
     
     env_cfg.asset.init_arm_weight = 1
     env_cfg.asset.arm_curriculum = False

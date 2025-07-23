@@ -1,4 +1,5 @@
 from legged_gym.envs.base.legged_robot_config import LeggedRobotCfg, LeggedRobotCfgPPO
+from legged_gym import LEGGED_GYM_ROOT_DIR
 
 
 class H1_2_WholeBodyCfg(LeggedRobotCfg):
@@ -271,10 +272,10 @@ class H1_2_WholeBodyCfgPPO(LeggedRobotCfgPPO):
         policy_class_name = "RNNActorMLPCritic"
         algorithm_class_name = "PPO"
 
-        upper_policy_path = '' # change to your upper body policy path!
+        upper_policy_path = f"{LEGGED_GYM_ROOT_DIR}/logs/h1_2_upper/Jul19_07-50-35_upper_body_iteration1/model_10000.pt" # change to your upper body policy path!
 
 
-        max_iterations = 100000
+        max_iterations = 10000#0
         save_interval = 100
         run_name = ''
         experiment_name = 'h1_2_lower'

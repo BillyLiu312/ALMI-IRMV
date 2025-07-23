@@ -70,13 +70,13 @@ def play(args):
     env_cfg.domain_rand.push_interval_s = 5
 
     env_cfg.env.test = True
-    env_cfg.commands.ranges.lin_vel_x = [0.0, 0.0]
-    env_cfg.commands.ranges.lin_vel_y = [0.0, 0.0]  
+    env_cfg.commands.ranges.lin_vel_x = [-0.7, 0.7]#[0.0, 0.0]
+    env_cfg.commands.ranges.lin_vel_y = [-0.3, 0.3]#[0.0, 0.0]  
     
-    env_cfg.commands.ranges.ang_vel_yaw = [0.0, 0.0]
+    env_cfg.commands.ranges.ang_vel_yaw = [-0.5, 0.5]#[0.0, 0.0]
 
-    env_cfg.commands.ranges.heading = [0, 0]
-    # # env_cfg.commands.ranges.heading = [3.14, 3.14]
+    # env_cfg.commands.ranges.heading = [0, 0]
+    env_cfg.commands.ranges.heading = [3.14, 3.14]
     
     env_cfg.terrain.mesh_type = "plane"
     
