@@ -3,7 +3,6 @@ import time
 import mujoco.viewer
 import mujoco
 import numpy as np
-from legged_gym import LEGGED_GYM_ROOT_DIR
 import torch
 import yaml
 import joblib
@@ -34,14 +33,14 @@ def pd_control(target_q, q, kp, target_dq, dq, kd):
 if __name__ == "__main__":
     
     config_file = 'h1_2_21dof.yaml'
-    with open(f"./deploy/deploy_mujoco/configs/{config_file}", "r") as f:
+    with open(f"D:/2024IRMV/Project/ALMI/ALMI-IRMV/ALMI_RL/deploy/deploy_mujoco/configs/{config_file}", "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
-        lower_policy_path = config["lower_policy_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
-        upper_policy_path = config["upper_policy_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
+        lower_policy_path = config["lower_policy_path"]
+        upper_policy_path = config["upper_policy_path"]
 
-        xml_path = config["xml_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
+        xml_path = config["xml_path"]
 
-        motion_path = config["motion_path"].replace("{LEGGED_GYM_ROOT_DIR}", LEGGED_GYM_ROOT_DIR)
+        motion_path = config["motion_path"]
 
         input_seq_len = config['input_seq_len']
         simulation_duration = config["simulation_duration"]
@@ -101,6 +100,7 @@ if __name__ == "__main__":
     print(colored(f"Load motion from {motion_path}......", "green"), end="\n")
     motion_data = joblib.load(motion_path) # shape: (num_motion, num_frames, num_dof)
     random_motion_idx = np.random.randint(0, len(motion_data))
+    print(colored(f"Current selected motion: {random_motion_idx}", "blue"), end="\n")
     frames = 0
 
     # load policy
@@ -134,7 +134,7 @@ if __name__ == "__main__":
                 gravity_orientation = get_gravity_orientation(quat)
                 omega = omega * ang_vel_scale
 
-                if counter // control_decimation > len(motion_data[random_motion_idx]):
+                if frames >= len(motion_data[random_motion_idx]):
                     random_motion_idx = np.random.randint(0, len(motion_data))
                     frames = 0
                     print(colored(f"Current selected motion: {random_motion_idx}", "blue"), end="\n")
