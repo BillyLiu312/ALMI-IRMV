@@ -6,7 +6,7 @@ motion_path: "D:/2024IRMV/Project/ALMI/ALMI-IRMV/ALMI_RL/resources/motions/all_w
 
 
 # Total simulation time
-simulation_duration: 100000
+simulation_duration: 10000
 # Simulation time step
 simulation_dt: 0.002
 # Controller update frequency (meets the requirement of simulation_dt * controll_decimation=0.02; 50Hz)
