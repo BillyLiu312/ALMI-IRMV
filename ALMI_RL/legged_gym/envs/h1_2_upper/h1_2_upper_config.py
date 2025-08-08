@@ -275,7 +275,7 @@ class H1_2_WholeBodyCfgPPO(LeggedRobotCfgPPO):
         policy_class_name = "RNNActorMLPCritic"
         algorithm_class_name = "PPO"
 
-        lower_policy_path = f"{LEGGED_GYM_ROOT_DIR}/logs/h1_2_lower/Jul21_02-52-25_lower_body_iteration2/model_10000.pt" # change to your lower body policy path!
+        lower_policy_path = f"{LEGGED_GYM_ROOT_DIR}/logs/h1_2_lower/Jul23_11-13-20_lower_body_iteration3/model_10000.pt" # change to your lower body policy path!
 
         max_iterations = 10000# 0
         save_interval = 100

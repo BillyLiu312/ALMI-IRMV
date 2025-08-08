@@ -112,6 +112,12 @@ def play(args):
     right_phase = []   
     left_sin_phase = []
     right_sin_phase = []
+
+    # export policy as a jit module (used to run it from C++)
+    if EXPORT_POLICY:
+        path = os.path.join(LEGGED_GYM_ROOT_DIR, 'logs', train_cfg.runner.experiment_name, args.load_run, 'exported')
+        export_policy_as_jit(ppo_runner.alg.actor_critic, path, checkpoint=args.checkpoint)
+        print('Exported policy as jit script to: ', path)
     
     for i in range(1000): #(int(env.max_episode_length)):
         actions = policy(obs.detach())
